@@ -1,19 +1,26 @@
 import 'dart:io';
-import 'jogavel.dart';
 import 'colorir.dart';
 
-class Jogador implements Jogavel{
-  String token = 'X';
+abstract class Jogador{
+  
+  static List<int> obtemJogada(){
 
-  int _obtemJogadaParcial(){
-
+    List<int> jogada = [];
     String? input;
-    
+    for(int i = 0; i < 2; i++){
+
     while (true){
 
       try{
+        if(i == 0){
+          stdout.write("Digite o valor da linha:\n>>");
+        }else{
+          stdout.write("Digite o valor da coluna:\n>>");
+        }
+        Colorir.ConsoleVerde();
         input = stdin.readLineSync();
-      }catch(e){
+        Colorir.ConsolePadrao();
+      } catch(e) {
         print(Colorir.amareloClaro("Erro! Posição inválida."));
         continue;
       }
@@ -28,24 +35,8 @@ class Jogador implements Jogavel{
         print(Colorir.amareloClaro("Erro! Posição inválida."));
       }
     }
-    return int.parse(input);
-  }
-
-  List<int> obtemJogada (){
-
-    List<int> jogada = [];
-
-    stdout.write("Digite o valor da linha:\n>>");
-    Colorir.ConsoleVerde();
-    jogada.add(_obtemJogadaParcial());
-    Colorir.ConsolePadrao();
-    
-    stdout.write("Digite o valor da coluna:\n>>");
-    Colorir.ConsoleVerde();
-    jogada.add(_obtemJogadaParcial());
-    Colorir.ConsolePadrao();
-
+    jogada.add(int.parse(input));
+    }
     return jogada;
   }
-
 }

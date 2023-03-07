@@ -6,8 +6,6 @@ import 'colorir.dart';
 void main(){
   
   Tabuleiro tabuleiro = Tabuleiro();
-  Jogador jogador = Jogador();
-  Computador computador = Computador();
   List<String> token = [Colorir.azul('X'), Colorir.vermelho('O')];
   int vezDeQuem = 0;
 
@@ -16,20 +14,20 @@ void main(){
   while(estadoTabuleiro == EstadoTabuleiro.INCOMPLETO){
 
     if(vezDeQuem == 0){
-      tabuleiro.setJogada(token[vezDeQuem], jogador.obtemJogada);
+      tabuleiro.setJogada(token[vezDeQuem], Jogador.obtemJogada);
     }else{
-      tabuleiro.setJogada(token[vezDeQuem], computador.obtemJogada);
+      tabuleiro.setJogada(token[vezDeQuem], Computador.obtemJogada);
     }
     
     tabuleiro.imprimirTabuleiro();
     estadoTabuleiro = tabuleiro.verificaVencedor();
 
     if(estadoTabuleiro == EstadoTabuleiro.VITORIA){
-      print("O jogador ${token[vezDeQuem]} venceu");
+      print("O jogador ${token[vezDeQuem]} venceu!");
       break;
     }
     else if(estadoTabuleiro == EstadoTabuleiro.EMPATE){
-      print("O jogo empatou");
+      print("O jogo empatou!");
       break;
     }
     vezDeQuem = (vezDeQuem + 1) % 2;

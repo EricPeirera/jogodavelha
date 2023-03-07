@@ -34,10 +34,7 @@ class Tabuleiro {
       else if(token == Colorir.azul('X')){
         print(Colorir.amareloClaro("Erro! Posição inválida."));
       }
-      
-    }
-    
-    
+    } 
   }
 
   EstadoTabuleiro verificaVencedor(){
